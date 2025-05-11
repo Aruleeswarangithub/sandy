@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify, render_template
 from twilio.rest import Client
-
+import os
 app = Flask(__name__)
 
 # Twilio credentials (replace with your own securely in production)
-ACCOUNT_SID = "AC0d62fd5f9c4c73b912040a970db06a05"
-AUTH_TOKEN = "8f158fc3ffd5e33c084619da27ce5caf"
+ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
+AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
 FROM_NUMBER = "+19787979973"  # Your Twilio number
 TO_NUMBERS = ["+919361468491", "+918807561446"]  # Verified numbers
 
