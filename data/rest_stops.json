@@ -1,0 +1,320 @@
+[
+    {
+        "name": "Karur Vysya Bank ATM",
+        "category": "atm",
+        "location": "Dr.Mahalingam College Of Engineering And Echnology, M.K, Patti Post, Pollachi, Tamil Nadu 642003",
+        "lat": 10.656040488758384,
+        "lon": 77.03633357116415,
+        "link": "https://maps.google.com/?q=10.656135383093215,77.0363443"
+    },
+    {
+        "name": "CSB Bank ATM",
+        "category": "atm",
+        "location": "Nachimuthu St, Annamalai Nagar, Tamil Nadu 642001",
+        "lat": 10.656217406682455,
+        "lon": 77.03397698650753,
+        "link": "https://maps.google.com/?q=10.656217406682455,77.03397698650753"
+    },
+    {
+        "name": "Federal Bank ATM",
+        "category": "atm",
+        "location": "Devinagar, Chinnampalayam, Coimbatore, NH-209, Udumalpet Pollachi Road, Pollachi, Pollachi, 642001",
+        "lat": 10.657867462662274, 
+        "lon": 77.04426781534337,
+        "link": "https://maps.google.com/?q=10.657867462662274,77.04426781534337"
+    },
+    {
+        "name": "State Bank of India ATM",
+        "category": "atm",
+        "location": "M24H+HM9, Sakthi Nagar, Pollachi, Tamil Nadu 642130",
+        "lat": 10.656655363585697, 
+        "lon": 77.02917718465662,
+        "link": "https://maps.google.com/?q=10.656655363585697,77.02917718465662"
+    },
+    {
+        "name": "CANARA BANK ATM1",
+        "category": "atm",
+        "location": "NPT CAMPUS, 642 003, Pollachi - Udumalpet Rd, Sakthi Nagar, Pollachi, Tamil Nadu 642003",
+        "lat": 10.656612332205551,
+        "lon": 77.03355478465662,
+        "link": "https://maps.google.com/?q=10.656612332205551,77.03355478465662"
+    },
+
+    {
+        "name": "Public Paid Toilet",
+        "category": "rest",
+        "location": "M245+WPR, Puliampatti, Pollachi, Tamil Nadu 642001",
+        "lat": 10.657525200290122, 
+        "lon": 77.00933127301508,
+        "link": "https://maps.google.com/?q=10.657525200290122,77.00933127301508"
+    },
+    {
+        "name": "SBM Toilet",
+        "category": "rest",
+        "location": "kamarajar nagar, Arumugham layout, Pollachi, Tamil Nadu 642001",
+        "lat": 10.654740989568257, 
+        "lon": 77.02219981719432,
+        "link": "https://maps.google.com/?q=10.654740989568257,77.02219981719432"
+    },
+    {
+        "name": "Public Restroom Mahalingapuram",
+        "category": "rest",
+        "location": "11, Vijayaraghavan St, Mahalingapuram, Tamil Nadu 642002",
+        "lat": 10.668350054671876,
+        "lon":  77.01368062883584,
+        "link": "https://maps.google.com/?q=10.668413315006239,77.01432435898668"
+    },
+    {
+        "name": "SBM Toilet",
+        "category": "rest",
+        "location": "PMC Colony, Pollachi, Tamil Nadu 642001",
+        "lat": 10.664469252911001,
+        "lon":  77.01530011534338,
+        "link": "https://maps.google.com/?q=10.664469252911001,77.01530011534338"
+    },
+    {
+        "name": "SBM TOILET",
+        "category": "rest",
+        "location": "Chaluvadi Colony, Pollachi, Teachers Colony, Tamil Nadu 642001",
+        "lat": 10.655961087639467, 
+        "lon": 77.018436,
+        "link": "https://maps.google.com/?q=10.655961087639467,77.018436"
+    },
+
+    {
+        "name": "Chandra Quick Lube",
+        "category": "mechanic",
+        "location": " Pollachi Main Road, Mahalingapuram, Pollachi, Tamil Nadu, 642002",
+        "lat": 10.664554952950152, 
+        "lon": 77.00801598191414,
+        "link": "https://maps.google.com/?q=10.664554952950152,77.00801598191414"
+    },
+    {
+        "name": "SELVA MOTORS",
+        "category": "mechanic",
+        "location": "4/296-1 STC Near Raj Surya Nagar Thippampatti, Pollachi, Tamil Nadu 642107",
+        "lat": 10.654137058278966,
+        "lon":  77.06951282698493,
+        "link": "https://maps.google.com/?q=10.654137058278966,77.06951282698493"
+    },
+    {
+        "name": "Guruvayurappan body work shop",
+        "category": "mechanic",
+        "location": "M24R+MHV, Udumalai Road, Vadivu Nagar, Teachers Colony, Tamil Nadu 642001",
+        "lat": 10.656994150911604,
+        "lon":  77.04144382883585,
+        "link": "https://maps.google.com/?q=10.656994150911604,77.04144382883585"
+    },
+    {
+        "name": "Sun Auto Care",
+        "category": "mechanic",
+        "location": "Palamuthir nilayam, Palladam Road, opposite road, Krishnasamy Layout, Rathinasabapathy Puram, Pollachi, Tamil Nadu 642001",
+        "lat": 10.663427227720515, 
+        "lon": 77.01731390185094,
+        "link": "https://maps.google.com/?q=10.663427227720515,77.01731390185094"
+    },
+    {
+        "name": "GLOBAL GARAGE",
+        "category": "mechanic",
+        "location": "No.105, Nethaji Road, Guhan Mill Complex Samson Hotel Backside, near NGM College, Pollachi, Tamil Nadu 642001",
+        "lat": 10.663745971067513, 
+        "lon": 76.99836441534339,
+        "link": "https://maps.google.com/?q=10.663745971067513,76.99836441534339"
+    },
+
+    {
+        "name": "GO EC Charging Station",
+        "category": "charging",
+        "location": "Ahalia-Walayar , Pudussery East",
+        "lat": 10.826705843681681, 
+        "lon": 76.8260439576717,
+        "link": "https://maps.google.com/?q=10.826705843681681,76.8260439576717"
+    },
+    {
+        "name": "Zeon Charging Station",
+        "category": "charging",
+        "location": "Electronic City Phase 1",
+        "lat": 11.009200765045756,
+        "lon":  76.95941089999998,
+        "link": "https://maps.google.com/?q=11.009200765045756,76.95941089999998"
+    },
+    {
+        "name": "Charge Zone Charging Station",
+        "category": "charging",
+        "location": "ibis Hotel, Lakshmi Mills, Junction, Puliakulam Rd, Coimbatore, Tamil Nadu 641037",
+        "lat": 11.012137021017427, 
+        "lon": 76.9865966395911,
+        "link": "https://maps.google.com/?q=11.012137021017427,76.9865966395911"
+    },
+    {
+        "name": "Statiq Charging Station",
+        "category": "charging",
+        "location": "1266/14, W Club Rd, Welcomhotel, R, Coimbatore, Tamil Nadu 641018",
+        "lat": 10.996265709653278, 
+        "lon": 76.97353340000001,
+        "link": "https://maps.google.com/?q=10.996265709653278,76.97353340000001"
+    },
+    {
+        "name": "Electrica Charging Station",
+        "category": "charging",
+        "location": "Indian Oil Petrol Station, Besides, Palakkad",
+        "lat": 10.792741685055502, 
+        "lon": 76.60371269698516,
+        "link": "https://maps.google.com/?q=10.792741685055502,76.60371269698516"
+    },
+
+    {
+        "name": "CAFE JUNCTION - MULTI CUISINE RESTAURANT",
+        "category": "cafe",
+        "location": "Roundana Back Gate, 32/14, Venkatraman Round Rd, Mahalingapuram, Tamil Nadu 642002",
+        "lat": 10.667566024995297, 
+        "lon": 77.01229431349245,
+        "link": "https://maps.google.com/?q=10.667566024995297,77.01229431349245"
+    },
+    {
+        "name": "Swiss Cafe Pvt Ltd",
+        "category": "cafe",
+        "location": "2/135 A, near Kumarasamy oil Bank, Unjavelampatti, Pollachi, Tamil Nadu 642003",
+        "lat": 10.658930230680408, 
+        "lon": 77.05873934232831,
+        "link": "https://maps.google.com/?q=10.658930230680408,77.05873934232831"
+    },
+    {
+        "name": "Sakthi Cafe",
+        "category": "cafe",
+        "location": "No 678, Roundana Round Road, Pollachi, Tamil Nadu 642002",
+        "lat": 10.6682231773622, 
+        "lon": 77.01383262883584,
+        "link": "https://maps.google.com/?q=10.6682231773622,77.01383262883584"
+    },
+    {
+        "name": "Cafeteria",
+        "category": "cafe",
+        "location": "M23P+P7X, Annamalai Nagar, Makkinampatti, Tamil Nadu 642001",
+        "lat": 10.65460250902404, 
+        "lon": 77.0356488693132,
+        "link": "https://maps.google.com/?q=10.65460250902404,77.0356488693132"
+    },
+    {
+        "name": "We chai",
+        "category": "cafe",
+        "location": "M24M+95W, Palani St, Palaniappa Gounder Colony, Annamalai Nagar, Vinayagar Kovil, Pollachi, Tamil Nadu 642001",
+        "lat": 10.65614540105461, 
+        "lon": 77.03296475767172,
+        "link": "https://maps.google.com/?q=10.656166488679865,77.0329862153434"
+    },
+
+    {
+        "name": "VSC Petrol Pump",
+        "category": "fuel",
+        "location": "Dindigul - Bangalore Road, Rama Nagar, M.K Patti, Pollachi, Tamil Nadu 642001",
+        "lat": 10.65675795506836, 
+        "lon": 77.02683454835721,
+        "link": "https://maps.google.com/?q=10.65675795506836,77.02683454835721"
+    },
+    {
+        "name": "IndianOil",
+        "category": "fuel",
+        "location": "108, Pollachi - Udumalpet Rd, Pollachi, Teachers Colony, Tamil Nadu 642008",
+        "lat": 10.656541519865312, 
+        "lon": 77.02279516931321,
+        "link": "https://maps.google.com/?q=10.656541519865312,77.02279516931321"
+    },
+    {
+        "name": "Bharat Petroleum, Petrol Pump - N.Mahalingam & Co.",
+        "category": "fuel",
+        "location": "CBE ROAD POLLACHI, COIMBATORE, Tamil Nadu 642002",
+        "lat": 10.66856467146656, 
+        "lon": 77.00758607301508,
+        "link": "https://maps.google.com/?q=10.66856467146656,77.00758607301508"
+    },
+    {
+        "name": "Indian Oil and CNG",
+        "category": "fuel",
+        "location": "Venkatasa Colony, Pollachi, Tamil Nadu 642001",
+        "lat": 10.668212794365402, 
+        "lon": 77.0071132576717,
+        "link": "https://maps.google.com/?q=10.668212794365402,77.0071132576717"
+    },
+    {
+        "name": "NPTC,MCET vehicle Parking",
+        "category": "parking",
+        "location": "M24P+589, Annamalai Nagar, Makkinampatti, Tamil Nadu 642001",
+        "lat": 10.65561287670163, 
+        "lon": 77.03593803068678,
+        "link": "https://maps.google.com/?q=10.65561287670163,77.03593803068678"
+    },
+    {
+        "name": "NPTC Car Parking",
+        "category": "parking",
+        "location": "M24M+5QC, Annamalai Nagar, Makkinampatti, Tamil Nadu 642001",
+        "lat": 10.65564977667608, 
+        "lon": 77.03445144417923,
+        "link": "https://maps.google.com/?q=10.65564977667608,77.03445144417923"
+    },
+    {
+        "name": "Venus car parking",
+        "category": "parking",
+        "location": "M256+4C3, Marapettai, Pollachi, Tamil Nadu 642001",
+        "lat": 10.657900525052852, 
+        "lon": 77.01105815767168,
+        "link": "https://maps.google.com/?q=10.657900525052852,77.01105815767168"
+    },
+    {
+        "name": "Car Parking Subramaniyar Temple",
+        "category": "parking",
+        "location": "M245+VRG, opp. Subramaniyar temple, Puliampatti, Pollachi, Tamil Nadu 642001",
+        "lat": 10.657487325605798, 
+        "lon": 77.00953095582076,
+        "link": "https://maps.google.com/?q=10.657487325605798,77.00953095582076"
+    },
+    {
+        "name": "NPTC Park",
+        "category": "parking",
+        "location": "M23P+X7W, Annamalai Nagar, Makkinampatti, Tamil Nadu 642001",
+        "lat": 10.65519833313578, 
+        "lon": 77.0357104,
+        "link": "https://maps.google.com/?q=10.65519833313578,77.0357104"
+    },
+
+    {
+        "name": "Amutha Surabhi",
+        "category": "restaurant",
+        "location": "Pollachi - Udumalpet Rd, Devi Nagar, Vadivu Nagar, Pollachi, Tamil Nadu 642003",
+        "lat": 10.660038668350627, 
+        "lon": 77.04690059927863,
+        "link": "https://maps.google.com/?q=10.660038668350627,77.04690059927863"
+    },
+    {
+        "name": "HOTEL GOWRI KRISHNA",
+        "category": "restaurant",
+        "location": "7/4-1, Udumalai Road, Near Regional Transport Office Pollachi, Annamalai Nagar, Pollachi, Tamil Nadu 642003",
+        "lat": 10.658293611703415, 
+        "lon": 77.02807684709094,
+        "link": "https://maps.google.com/?q=10.658293611703415,77.02807684709094"
+    },
+    {
+        "name": "HOTEL SUBUHANA",
+        "category": "restaurant",
+        "location": "Vadivu Nagar, Pollachi, Tamil Nadu 642001",
+        "lat": 10.658546661324669, 
+        "lon": 77.04043646598713,
+        "link": "https://maps.google.com/?q=10.658546661324669,77.04043646598713"
+    },
+    {
+        "name": "KOZHI.IN POLLACHI BRANCH",
+        "category": "restaurant",
+        "location": "239, Kumaran Street,Palladam Road, Pollachi, Tamil Nadu 630001",
+        "lat": 10.659221459286343, 
+        "lon": 77.01159735522938,
+        "link": "https://maps.google.com/?q=10.659221459286343,77.01159735522938"
+    },
+    {
+        "name": "Sri Vaagai Restaurant & Dhaba",
+        "category": "restaurant",
+        "location": "2/2384, Palani Main road, Unjavelampatti, Pollachi, Tamil Nadu 642003",
+        "lat": 10.66234238040038, 
+        "lon": 77.05107947114773,
+        "link": "https://maps.google.com/?q=10.66234238040038,77.05107947114773"
+    }
+]

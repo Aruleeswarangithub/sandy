@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sandy Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🛣️ Sandy Chatbot</h1>
+
+        <div class="chat-window" id="chat-window">
+            <div class="chat-log" id="chat-log"></div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">Start Sandy</button> <!-- Added Start Button -->
+            <button id="start-btn">🎙️ Speak</button>
+        </div>
+    </div>
+
+    <script>
+        let LAT = localStorage.getItem('user_lat');
+        let LNG = localStorage.getItem('user_lng');
+
+        if (!LAT || !LNG) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    LAT = pos.coords.latitude;
+                    LNG = pos.coords.longitude;
+                    localStorage.setItem('user_lat', LAT);
+                    localStorage.setItem('user_lng', LNG);
+                }, () => {
+                    alert("Unable to retrieve your location. Please enable location services.");
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        // Function to speak text
+        function speakText(text) {
+            const apiKey = 'sk_c32984d292bbfd79a8bb4f05e40295e2cb1dbadd007c152f';
+            const voiceId = 'dPah2VEoifKnZT37774q';
+
+            fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                method: 'POST',
+                headers: {
+                    'xi-api-key': apiKey,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: text,
+                    model_id: "eleven_monolingual_v1",
+                    voice_settings: {
+                        stability: 0.75,
+                        similarity_boost: 0.75
+                    }
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch audio from Eleven Labs");
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const audioUrl = URL.createObjectURL(blob);
+                const audio = new Audio(audioUrl);
+                audio.play();
+            })
+            .catch(err => {
+                console.error("Text-to-speech error:", err);
+            });
+        }
+
+        // Append chat message
+        function appendMessage(sender, message) {
+            const chatLog = document.getElementById('chat-log');
+            const messageElement = document.createElement('div');
+            messageElement.className = `chat-message ${sender}`;
+            messageElement.textContent = message;
+            chatLog.appendChild(messageElement);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        // Add loading message
+        function showLoading() {
+            const chatLog = document.getElementById('chat-log');
+            const loadingElement = document.createElement('div');
+            loadingElement.className = 'chat-message bot loading';
+            loadingElement.textContent = '⏳ Thinking... Please wait.';
+            loadingElement.id = 'loading-message';
+            chatLog.appendChild(loadingElement);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        // Remove loading message
+        function hideLoading() {
+            const loading = document.getElementById('loading-message');
+            if (loading) loading.remove();
+        }
+
+        // Speech recognition setup
+        document.getElementById('start-btn').addEventListener('click', () => {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("Speech Recognition not supported in this browser.");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.start();
+
+            appendMessage('bot', "🎤 I'm listening...");
+
+            recognition.onresult = (event) => {
+                const message = event.results[0][0].transcript.trim();
+
+                appendMessage('user', message);
+
+                // Clear previous bot responses but not the user messages
+                const botMessages = document.querySelectorAll('.chat-message.bot');
+                botMessages.forEach(msg => msg.remove()); // Remove previous bot messages
+
+                showLoading();
+
+                fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message, lat: LAT, lng: LNG })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    hideLoading();
+                    if (data.response) {
+                        appendMessage('bot', data.response);
+                        speakText(data.response);
+
+                        // Detect fatigue message trigger
+                        const lowerResp = data.response.toLowerCase();
+                        if (lowerResp.includes("you are tired") || lowerResp.includes("you feel tired") || lowerResp.includes("fatigue")) {
+                            startFatigueReminder();
+                        }
+
+                        // Optionally stop reminders if user says they're okay
+                        const lowerUserMsg = message.toLowerCase();
+                        if (lowerUserMsg.includes("i'm fine") || lowerUserMsg.includes("i am okay") || lowerUserMsg.includes("not tired")) {
+                            stopFatigueReminder();
+                            appendMessage('bot', "👍 Got it! Stopping fatigue reminders.");
+                        }
+                    }
+
+                    if (data.places && data.category) {
+                        displayPlacesByCategory(data.category, data.places);
+                    }
+                })
+                .catch(err => {
+                    hideLoading();
+                    appendMessage('bot', '❌ Something went wrong. Please try again.');
+                    console.error(err);
+                });
+            };
+
+            recognition.onerror = (event) => {
+                appendMessage('bot', "❓ I didn't catch that. Can you please rephrase?");
+                console.error("Speech recognition error:", event.error);
+            };
+        });
+
+        // Function to display places based on category
+        function displayPlacesByCategory(category, places) {
+            const chatLog = document.getElementById("chat-log");
+
+            const filteredPlaces = places.filter(place => 
+                place.category && place.category.toLowerCase() === category.toLowerCase()
+            );
+
+            if (filteredPlaces.length === 0) {
+                appendMessage("bot", `❌ No nearby places found for category: ${category}`);
+                return;
+            }
+
+            filteredPlaces.forEach(place => {
+                const card = document.createElement("div");
+                card.className = "place-card";
+
+                card.innerHTML = `
+                    <div class="place-info">
+                        <h3 class="place-name">${place.name}</h3>
+                        <p class="place-location">📍 ${place.location}</p>
+                        <a href="${place.link}" target="_blank" class="navigate-link">
+                            <button class="nav-button">📌 Navigate</button>
+                        </a>
+                    </div>
+                `;
+
+                const wrapper = document.createElement("div");
+                wrapper.className = "chat-message bot";
+                wrapper.appendChild(card);
+                chatLog.appendChild(wrapper);
+                chatLog.scrollTop = chatLog.scrollHeight;
+            });
+        }
+
+        // Fatigue reminder logic
+        const fatigueSuggestions = [
+            "😴 You seem tired. Would you like to take a quick break somewhere safe?",
+            "🛑 Feeling drowsy? I can help find a rest stop near you.",
+            "🚗 It's important to rest. Which type of rest place do you prefer?"
+        ];
+
+        let fatigueDetected = false;
+        let fatigueIntervalId = null;
+        let fatigueMessageIndex = 0;
+
+        function startFatigueReminder() {
+            if (!fatigueDetected) {
+                fatigueDetected = true;
+                fatigueIntervalId = setInterval(() => {
+                    const msg = fatigueSuggestions[fatigueMessageIndex % fatigueSuggestions.length];
+                    fatigueMessageIndex++;
+                    appendMessage('bot', msg);
+                    speakText(msg);
+                }, 1 * 60 * 1000); // 5 minutes
+            }
+        }
+
+        function stopFatigueReminder() {
+            if (fatigueIntervalId) {
+                clearInterval(fatigueIntervalId);
+                fatigueIntervalId = null;
+                fatigueDetected = false;
+            }
+        }
+
+        // Auto fatigue alert message every 5 minutes (for demo/alert purposes)
+        let autoFatigueInterval = null;
+        let fatigueCycleCount = 0;
+
+        function autoStartFatigueAlerts() {
+            const alertMessage = "⚠️ Alert: Fatigue can impact your driving. Take regular breaks for safety.";
+            
+            // Start the alerts only after 1 minute
+            setTimeout(() => {
+                appendMessage('bot', alertMessage);
+                speakText(alertMessage);
+                fatigueCycleCount = 1;
+
+                // Repeat alert every 5 minutes (300000ms)
+                autoFatigueInterval = setInterval(() => {
+                    if (fatigueCycleCount >= 3) { // Stop after 3 alerts
+                        clearInterval(autoFatigueInterval);
+                        return;
+                    }
+                    appendMessage('bot', alertMessage);
+                    speakText(alertMessage);
+                    fatigueCycleCount++;
+                }, 5 * 60 * 1000); // 5 minutes
+            }, 1 * 60 * 1000); // Initial delay of 1 minute
+        }
+
+        // Trigger Sandy's intro after user clicks Start
+        document.getElementById('startBtn').addEventListener('click', () => {
+            introduceSandy();  
+
+            // Optionally hide the button after starting
+            document.getElementById('startBtn').style.display = 'none';
+
+            // Start fatigue alerts after intro is read
+            setTimeout(autoStartFatigueAlerts, 6000); // allow time for TTS
+        });
+
+        // Function to introduce Sandy with a random message
+        const introductionMessages = [
+            "👋 Hi! I'm Sandy, your voice-enabled road safety assistant. I'm here to help you with weather updates, find nearby rest stops, and keep you alert and safe while you're driving. Just talk to me, and I'll guide you along the way!",
+            "Hey there! I'm Sandy, your road trip buddy. I'll help you with weather updates, find the best rest stops nearby, and keep you awake and alert on the road. Just ask, and I'll handle the rest!",
+            "Hello, I’m Sandy, your personal road safety assistant. I’m here to provide real-time weather updates, guide you to the nearest rest stops, and make sure you stay alert on your journey. Let me know how I can assist you!"
+        ];
+
+        // Function to pick a random introduction
+        function introduceSandy() {
+            const randomMessage = introductionMessages[Math.floor(Math.random() * introductionMessages.length)];
+            appendMessage('bot', randomMessage);  // Display the message
+            speakText(randomMessage);  // Read the message aloud
+        }
+
+    </script>
+</body>
+</html>
