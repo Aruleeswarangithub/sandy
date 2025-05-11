@@ -5,9 +5,9 @@ import os
 app = Flask(__name__)
 
 # Load Twilio credentials from Render environment variables
-ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
-AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
-
+ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
+AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+client = Client(account_sid, auth_token)
 # OPTIONAL: Debug logging (REMOVE after verifying)
 print("✅ TWILIO_ACCOUNT_SID:", ACCOUNT_SID)
 print("✅ TWILIO_AUTH_TOKEN:", AUTH_TOKEN)
