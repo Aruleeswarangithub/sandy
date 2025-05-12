@@ -3,6 +3,7 @@ let audioChunks = [];
 const chatLog = document.getElementById("chat-log");
 const startBtn = document.getElementById("start-btn");
 const RECORD_DURATION = 5000; // 5 seconds
+let currentAudio = null;
 
 startBtn.addEventListener("click", startRecording);
 
@@ -30,10 +31,10 @@ async function speakText(text) {
         if (response.ok) {
             const audioData = await response.blob();
             const audioUrl = URL.createObjectURL(audioData);
-            const audio = new Audio(audioUrl);
-            audio.play();
+            currentAudio = new Audio(audioUrl); // ✅ Keep global reference
+            currentAudio.play();
 
-            audio.onended = () => {
+            currentAudio.onended = () => {
                 console.log('Speech finished playing');
             };
         } else {
