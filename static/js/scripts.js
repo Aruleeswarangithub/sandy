@@ -7,7 +7,7 @@ const RECORD_DURATION = 5000; // 5 seconds
 startBtn.addEventListener("click", startRecording);
 
 async function speakText(text) {
-    const apiKey = 'sk_c32984d292bbfd79a8bb4f05e40295e2cb1dbadd007c152f';
+    const apiKey = 'sk_5254b577c72f3c25d60d5c6ac27d7e60d2cc43329030626a';
     const voiceId = 'dPah2VEoifKnZT37774q';
 
     try {
