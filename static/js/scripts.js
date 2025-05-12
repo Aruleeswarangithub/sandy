@@ -8,7 +8,7 @@ let currentAudio = null;
 startBtn.addEventListener("click", startRecording);
 
 async function speakText(text) {
-    const apiKey = 'sk_3daead91572b7368cad37515e94559e05ceb5b52db4d73a0';
+    const apiKey = 'Your api key updated js';
     const voiceId = 'dPah2VEoifKnZT37774q';
 
     try {
