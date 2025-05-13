@@ -3,12 +3,11 @@ let audioChunks = [];
 const chatLog = document.getElementById("chat-log");
 const startBtn = document.getElementById("start-btn");
 const RECORD_DURATION = 5000; // 5 seconds
-let currentAudio = null;
 
 startBtn.addEventListener("click", startRecording);
 
 async function speakText(text) {
-    const apiKey = 'Your api key updated js';
+    const apiKey = 'sk_c32984d292bbfd79a8bb4f05e40295e2cb1dbadd007c152f';
     const voiceId = 'dPah2VEoifKnZT37774q';
 
     try {
@@ -20,7 +19,7 @@ async function speakText(text) {
             },
             body: JSON.stringify({
                 text: text,
-                model_id: "eleven_monolingual_v2",
+                model_id: "eleven_monolingual_v1",
                 voice_settings: {
                     stability: 0.75,
                     similarity_boost: 0.75
@@ -31,10 +30,10 @@ async function speakText(text) {
         if (response.ok) {
             const audioData = await response.blob();
             const audioUrl = URL.createObjectURL(audioData);
-            currentAudio = new Audio(audioUrl); // ✅ Keep global reference
-            currentAudio.play();
+            const audio = new Audio(audioUrl);
+            audio.play();
 
-            currentAudio.onended = () => {
+            audio.onended = () => {
                 console.log('Speech finished playing');
             };
         } else {
